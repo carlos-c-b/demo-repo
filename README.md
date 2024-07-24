@@ -1,5 +1,5 @@
 # Demo
 
 Some description 
-This is a change\n
+This is a change
 # Test
