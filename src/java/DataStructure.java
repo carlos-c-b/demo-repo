@@ -1,3 +1,5 @@
+// Exercise 2 from Classes and Objects/Nested Classes
+
 public class DataStructure {
 	
 // Create an array
@@ -23,6 +25,7 @@ public class DataStructure {
 		System.out.println();
 	}
 
+	// Exercise 2.a.
 	public void print(DataStructureIterator iterator) {
 		// Print out values of even indices of the array
 		while (iterator.hasNext()) {
@@ -30,21 +33,20 @@ public class DataStructure {
 		}
 		System.out.println();
 	}
-			/* This has to bi fixed*/	
-			/* This has to bi fixed*/	
-			/* This has to bi fixed*/	
-			/* This has to bi fixed*/	
-			/* This has to bi fixed*/	
-			/* This has to bi fixed*/	
+
+	// Exercise 2.c.
 	public void print(java.util.function.Function<Integer, Boolean> iterator) {
-		int next;
-		while (iterator.hasNext()) {
-			next = iterator.next();
-			if (iterator.apply(next))
-				System.out.print(next + " ");
-		}
+		// Iterating over the elements of the array
+		for (int e : arrayOfInts)
+			if (iterator.apply(e))
+				System.out.print(e + " ");
 		System.out.println();
 	}
+
+	// Exercise 2.d.
+	public static boolean isEvenIndex(int n) { return n % 2 == 0; }
+	public static boolean isOddIndex(int n) { return n % 2 != 0; }
+
 
 	interface DataStructureIterator extends java.util.Iterator<Integer> { }
 
@@ -77,7 +79,13 @@ public class DataStructure {
 		// values of even indices
 		DataStructure ds = new DataStructure();
 		ds.printEven();
+		
+		// Exercise 2.a.
+		System.out.print("Exercise 2.a.: ");
 		ds.print(ds.new EvenIterator());
+
+		// Exercise 2.b.
+		System.out.print("Exercise 2.b.: ");
 		ds.print(new DataStructure.DataStructureIterator() {
 			private int nextIndex = 1;
 			private static final int SIZE = DataStructure.getSize();
@@ -93,6 +101,17 @@ public class DataStructure {
 				return retValue;
 			}
 		});
+
+		// Exercise 2.c.
+		System.out.print("Exercise 2.c.: ");
+		ds.print((n) -> n % 2 == 0);
+		System.out.print("\t       ");
 		ds.print((n) -> n % 2 != 0);
+		
+		// Exercise 2.d.
+		System.out.print("Exercise 2.d.: ");
+		ds.print(DataStructure::isEvenIndex);
+		System.out.print("\t       ");
+		ds.print(DataStructure::isOddIndex);
 	}
 }
