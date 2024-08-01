@@ -22,7 +22,11 @@ public class EnumTest {
 	}
 
 	public static void main(String[] args) {
-		EnumTest app = new EnumTest(Day.WEDNESDAY);
-		app.speak();
+		try {
+			EnumTest app = new EnumTest(Day.valueOf(args[0].toUpperCase()));
+			app.speak();
+		} catch (Exception e) {
+			System.err.println("Error: Introduce a day of the week as an argument");
+		}
 	}
 }
