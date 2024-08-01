@@ -22,7 +22,7 @@ public class EnumTest {
 	}
 
 	public static void main(String[] args) {
-		EnumTest app = new EnumTest(Day.SUNDAY);
+		EnumTest app = new EnumTest(Day.WEDNESDAY);
 		app.speak();
 	}
 }
