@@ -12,19 +12,18 @@ public class EnumTest {
 
 	public void speak() {
 		switch(day) {
-			case MONDAY: case TUESDAY: case WEDNESDAY: case THURSDAY: case FRIDAY:
-				System.out.println("Today is a weekday");
-				break;
 			case SATURDAY: case SUNDAY:	
 				System.out.println("Today is weekend");
+				break;
+			default:
+				System.out.println("Today is a weekday");
 				break;
 		}
 	}
 
 	public static void main(String[] args) {
 		try {
-			EnumTest app = new EnumTest(Day.valueOf(args[0].toUpperCase()));
-			app.speak();
+			new EnumTest(Day.valueOf(args[0].toUpperCase())).speak();
 		} catch (Exception e) {
 			System.err.println("Error: Introduce a day of the week as an argument");
 		}
