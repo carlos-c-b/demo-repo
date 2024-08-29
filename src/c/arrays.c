@@ -2,7 +2,7 @@
 
 int main()
 {
-	int arrays[10];
-	printf("%d\n",arrays[0]);
+	int marks[5] = {1,2,3,4,5};
+	printf("%d\n", *(&marks[0]));
 	return 0;
 }
