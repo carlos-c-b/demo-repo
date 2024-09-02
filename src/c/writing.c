@@ -1,46 +1,50 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
-int main()
+void writing(int n, char **s);
+void reading();
+
+int main(int argc, char **argv)
+{
+	writing(argc, argv);
+	reading();
+	return 0;
+}
+
+void writing(int n, char **s)
 {
 	FILE *wrt;
-	FILE *read;
-	char *message;
-	char c; // Character for reading 
-	message = "This is a message\n";
 
-	wrt = fopen("file.txt","a");
+	wrt = fopen("file.txt", "a");
 
 	if(wrt != NULL)
 	{
-		fputs(message, wrt);
+		for (int i = 1; i < n; i++)
+		{
+			fputs(s[i],wrt);
+			fputs(" ", wrt);
+		}
+		fputs("\n", wrt);
+		fclose(wrt);
 	}
 	else
-	{
-		printf("Error while opening file\n");
-		exit(0);
-	}	
+		printf("Error while opening file...\n");
+}
 
-	fclose(wrt);
+void reading()
+{
+	FILE *read;
+	char buffer[100];
 
 	read = fopen("file.txt", "r");
 
 	if(read != NULL)
 	{
-		c = getc(read);
-		while(c != EOF)
+		while(fgets(buffer, 100, read) != NULL)
 		{
-			printf("%c", c);
-			c = getc(read);
+			printf("%s", buffer);
 		}
 		fclose(read);
 	}
 	else
-	{
-		printf("Error while opening file\n");
-		exit(0);
-	}
-
-	return 0;
+		printf("Error while opening file...\n");
 }
